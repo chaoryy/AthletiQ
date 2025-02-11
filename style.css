@@ -1,0 +1,44 @@
+:root{
+    --black: #000000;
+    --green: #70e144;
+}
+
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 15px 30px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
