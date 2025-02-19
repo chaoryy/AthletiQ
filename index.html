@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,145 +10,82 @@
 <body>
   <!-- Шапка -->
   <header>
-    <nav>
-  	<div class="logo">AthletiQ</div>
-     	 <ul class="nav-links">
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#challenge">Вызов</a></li>
-        <li><a href="#success-stories">Истории успеха</a></li>
-        <li><a href="#achievements">Достижения</a></li>
-        <li><a href="#profile">Профиль</a></li>
-        <li><a href="#daily-tasks">Задачи</a></li>
-        <li><a href="#workout-plans">Тренировки</a></li>
-        <li><a href="#nutrition">Питание</a></li>
+    <nav class="navbar">
+      <div class="logo">Athleti<span class="highlight">Q</span></div>
+      <ul class="nav-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li class="navbar__item">
+          <a href="/" class="button">Log In</a>
+        </li>
       </ul>
-      <div class="header-buttons">
-        <button id="theme-toggle">🌙</button>
-        <button id="login-btn">Войти</button>
-      </div>
     </nav>
   </header>
 
   <!-- Герой-секция -->
   <section class="hero">
     <div class="hero-content">
-      <h1>90-дней</h1>
-      <p>Измени свою жизнь за 90 дней!</p>
-      <button id="register-btn">Присоединиться</button>
+      <h1>90 DAYS</h1>
+      <p>Change your life in 90 days!</p>
+      <button id="register-btn" class="button">Join Now</button>
     </div>
   </section>
 
-  <!-- Истории успеха -->
-  <section id="success-stories" class="section">
-    <h2>Истории успеха</h2>
-    <div class="stories-container">
-      <div class="story">"Я сбросил 15 кг! Спасибо!" - Алекс</div>
-      <div class="story">"Стала сильнее и увереннее!" - Мария</div>
-      <div class="story">"Впервые прошел марафон!" - Денис</div>
-      <div class="story">"Улучшил свою гибкость и выносливость!" - Ольга</div>
-    </div>
-  </section>
+  <!-- Calculator -->
+  <section class="calculator">
+    <h2>CALORIE CALCULATOR</h2>
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" min="100" max="250" required>
 
-  <!-- Достижения -->
-  <section id="achievements" class="section">
-    <h2>Достижения</h2>
-    <div class="achievements-container">
-      <div class="achievement">🏆 7 дней без пропусков</div>
-      <div class="achievement">🔥 10 тренировок подряд</div>
-      <div class="achievement">💪 5 кг сброшено</div>
-      <div class="achievement">🏃 Пробежал 5 км</div>
-      <div class="achievement">🥗 30 дней правильного питания</div>
-    </div>
-  </section>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" min="30" max="200" required>
 
-  <!-- Профиль -->
-  <section id="profile" class="section">
-    <h2>Личный кабинет</h2>
-    <p>Добро пожаловать, <span id="username">Пользователь</span>!</p>
-    <div class="profile-details">
-      <p><strong>Возраст:</strong> <span id="age">25</span></p>
-      <p><strong>Вес:</strong> <span id="weight">70 кг</span></p>
-      <p><strong>Цель:</strong> <span id="goal">Похудение</span></p>
-    </div>
-    <button id="update-profile">Обновить данные</button>
-    <button id="logout-btn">Выйти</button>
-  </section>
+    <label for="age">Age:</label>
+    <input type="number" id="age" min="10" max="100" required>
 
-  <!-- Ежедневные задачи -->
-  <section id="daily-tasks" class="section">
-    <h2>Ежедневные задачи</h2>
-    <ul class="tasks-list">
-      <li><input type="checkbox"> Утренняя зарядка</li>
-      <li><input type="checkbox"> 2 литра воды</li>
-      <li><input type="checkbox"> 10 000 шагов</li>
-      <li><input type="checkbox"> 30 минут кардио</li>
-    </ul>
-  </section>
-
-  <!-- Программы тренировок -->
-  <section id="workout-plans" class="section">
-    <h2>Программы тренировок</h2>
-    <div class="workout-container">
-      <div class="workout">💪 Силовые тренировки</div>
-      <div class="workout">🏃 Кардио-программа</div>
-      <div class="workout">🧘 Гибкость и растяжка</div>
-      <div class="workout">🥋 Боевые искусства</div>
-    </div>
-  </section>
-
-  <!-- План питания -->
-  <section id="nutrition" class="section">
-    <h2>План питания</h2>
-    <p>Персональные рекомендации по питанию в зависимости от целей.</p>
-    <button id="get-nutrition-plan">Получить план</button>
-  </section>
-
-  <!-- Футер -->
-  <footer>
-    <p>&copy; 2024 AthletiQ. Все права защищены.</p>
-  </footer>
-
-  <!-- Модальные окна -->
-  <div id="login-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Вход</h2>
-      <form id="login-form">
-        <input type="text" placeholder="Имя пользователя" required>
-        <input type="password" placeholder="Пароль" required>
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+    <div class="slider-container">
+      <label for="activity">Daily Activity Level:</label>
+      <input type="range" id="activity" min="1" max="5" step="1" value="3">
+      <p>Level: <span id="activity-value">Medium</span></p>
+      
   </div>
 
-  <div id="register-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Регистрация</h2>
-      <form id="register-form">
-        <input type="text" placeholder="Имя пользователя" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Пароль" required>
-        <button type="submit">Зарегистрироваться</button>
-      </form>
+    <h3>Goal:</h3>
+    <div class="btn-group" id="goal-group">
+      <button data-goal="lose">Lose Weight</button>
+      <button data-goal="maintain">Maintain Weight</button>
+      <button data-goal="gain">Gain Weight</button>
     </div>
-  </div>
 
-  <div id="update-profile-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Обновить профиль</h2>
-      <form id="update-profile-form">
-        <input type="number" placeholder="Возраст" id="update-age" required>
-        <input type="number" placeholder="Вес (кг)" id="update-weight" required>
-        <select id="update-goal" required>
-          <option value="Похудение">Похудение</option>
-          <option value="Набор массы">Набор массы</option>
-          <option value="Поддержание формы">Поддержание формы</option>
-        </select>
-        <button type="submit">Обновить</button>
-      </form>
+    <h3>Calculation Formula:</h3>
+    <div class="btn-group" id="formula-group">
+      <button data-formula="mifflin">Mifflin-St Jeor</button>
+      <button data-formula="harris">Harris-Benedict</button>
     </div>
+
+    <button id="calculate">CALCULATE</button>
+    <div class="result-container">
+      <div class="result-box">
+          <h3>Your BMI</h3>
+          <p class="bmi-value">--</p>
+          <div class="bmi-scale">
+              <span>Deficit</span>
+              <span>Normal</span>
+              <span>Excess</span>
+          </div>
+      </div>
+  
+      <div class="result-box">
+          <h3>Your Daily Calorie Intake</h3>
+          <p class="calories-value">-- kcal</p>
+          <div class="macros">
+              <p><span class="protein">-- g</span> Protein</p>
+              <p><span class="fat">-- g</span> Fat</p>
+              <p><span class="carbs">-- g</span> Carbs</p>
+          </div>
+      </div>
   </div>
+  
+  </section>
 </body>
 </html>
