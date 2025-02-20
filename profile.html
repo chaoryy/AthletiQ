@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="./profile.css">
+    <script defer src="/profile.js"></script>
 </head>
 <body>
     <!-- Шапка -->
@@ -11,128 +13,181 @@
     <nav class="navbar">
       <div class="logo">Athleti<span class="highlight">Q</span></div>
      	 <ul class="nav-links">
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#challenge">Challenge</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#daily-tasks">Tasks</a></li>
-        <li><a href="#workout-plans">Workouts</a></li>
-        <li><a href="#nutrition">Nutrition</a></li>
-        <li class="navbar__item">
-          <a href="/" class="button">Log In</a>
-      </li>
+        <li><a href="/index.html">Home</a></li>
+        <button id="logout-btn" class="button">Log Out</button>
       </ul>
     </nav>
   </header>
   <!-- Герой-секция -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>90 DAYS</h1>
-      <p>Change your life in 90 days!</p>
-      <button id="register-btn" class="button">Join Now</button>
+
+  <section class="account">
+    <!-- Профиль -->
+    <section class="profile">
+        <div class="profile-header">
+            <img src="/images/profile_pic.jpg" class="profile-pic">
+        </div>
+        <div class="profile-info">
+            <h2>WELCOME, <span id="displayUsername">!</span></h2>
+            <p><strong>Weight:</strong> <span id="weight">-</span> kg</p>
+            <p><strong>Height:</strong> <span id="height">-</span> cm</p>
+            <p><strong>Goal:</strong> <span id="goal">-</span></p>
+            <p><strong>BMI:</strong> <span id="bmi">-</span></p>
+        </div>
+    </section>
+    
+    <div class="content">
+        <!-- Программы тренировок -->
+        <section id="workout-recommendations" class="section">
+            <h2>WORKOUT</h2>
+            <p>🔥 Recommended Workouts</p>
+            <div class="workout-list">
+                <div class="workout-card">
+                    <img src="https://img.youtube.com/vi/y87vSUoIMGU/0.jpg" alt="Workout Thumbnail">
+                    <h3>Full Body Strength</h3>
+                    <p>An effective workout for the whole body.</p>
+                    <a href="https://youtu.be/y87vSUoIMGU?si=8BPfAK4ITQOrJlSj" target="_blank" class="button">Watch</a>
+                </div>
+        
+                <div class="workout-card">
+                    <img src="https://img.youtube.com/vi/M0uO8X3_tEA/0.jpg" alt="Workout Thumbnail">
+                    <h3>HIIT Cardio</h3>
+                    <p>Cardio-intensive for fat burning.</p>
+                    <a href="https://youtu.be/M0uO8X3_tEA?si=DudzoxppXyKlI5iV" target="_blank" class="button">Watch</a>
+                </div>
+        
+                <div class="workout-card">
+                    <img src="https://img.youtube.com/vi/UIPvIYsjfpo/0.jpg" alt="Workout Thumbnail">
+                    <h3>Full Body Workout</h3>
+                    <p>Strength training for the whole body.</p>
+                    <a href="https://youtu.be/UIPvIYsjfpo?si=-DBPRN3g1TnI-8C_" target="_blank" class="button">Watch</a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- План питания -->
+        <section id="nutrition" class="section">
+            <h2>NUTRITION</h2>
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown('breakfastContent', 'icon-breakfast')">
+                    <span class="arrow" id="icon-breakfast">▶</span> Breakfast
+                </div>
+                <div class="dropdown-content" id="breakfastContent">
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Greek Yogurt with Honey and Nuts',
+                        '/images/yogurt.jpg',
+                        'A delicious and healthy breakfast option.',
+                        '280 kcal / 15g Protein / 10g Fat / 30g Carbs',
+                        'Ingredients: 150g Greek yogurt, 1 tsp honey, 10g nuts (walnuts, almonds), ½ banana.',
+                        'Instructions: Place the Greek yogurt in a bowl. Drizzle with honey, add chopped nuts, and sliced banana.'
+                    )">
+                        <img src="/images/yogurt.jpg">
+                        <h3>Greek Yogurt with Honey and Nuts</h3>
+                        <p>280 kcal / 15g Protein / 10g Fat / 30g Carbs</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Vegetable Omelet',
+                        '/images/omlet.jpg',
+                        'A nutritious and easy-to-make omelet with vegetables.',
+                        '350 kcal / 22g Protein / 18g Fat / 25g Carbs',
+                        'Ingredients: 2 eggs, 50ml milk, ½ bell pepper, ½ tomato, 30g cheese.',
+                        'Instructions: Whisk the eggs with milk. Add chopped vegetables and cheese. Cook in a pan for 3-5 minutes.'
+                    )">
+                        <img src="/images/omlet.jpg">
+                        <h3>Vegetable Omelet</h3>
+                        <p>350 kcal / 22g Protein / 18g Fat / 25g Carbs</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown('lunchContent', 'icon-lunch')">
+                    <span class="arrow" id="icon-lunch">▶</span> Lunch
+                </div>
+                <div class="dropdown-content" id="lunchContent">
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Buckwheat with Chicken',
+                        '/images/Buckwheat.jpg',
+                        'A high-protein meal with chicken and nutritious buckwheat.',
+                        '400 kcal / 40g Protein / 10g Fat / 45g Carbs',
+                        'Ingredients: 100g buckwheat, 150g chicken breast, ½ onion, 1 tbsp olive oil, salt, pepper to taste.',
+                        'Instructions: Cook buckwheat according to package instructions. Sauté diced chicken and onion in olive oil. Mix with buckwheat.'
+                    )">
+                        <img src="/images/Buckwheat.jpg">
+                        <h3>Buckwheat with Chicken</h3>
+                        <p>400 kcal / 40g Protein / 10g Fat / 45g Carbs</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Tuna Salad',
+                        '/images/Tuna.jpg',
+                        'A refreshing salad with tuna, avocado, and lettuce.',
+                        '320 kcal / 30g Protein / 15g Fat / 20g Carbs',
+                        'Ingredients: 1 can (100g) tuna in water, 50g lettuce, ½ cucumber, ½ avocado, 1 tbsp olive oil, lemon juice to taste.',
+                        'Instructions: Chop the vegetables and mix with tuna. Drizzle with olive oil and lemon juice.'
+                    )">
+                        <img src="/images/Tuna.jpg">
+                        <h3>Tuna Salad</h3>
+                        <p>320 kcal / 30g Protein / 15g Fat / 20g Carbss</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown('dinnerContent', 'icon-dinner')">
+                    <span class="arrow" id="icon-dinner">▶</span> Dinner
+                </div>
+                <div class="dropdown-content" id="dinnerContent">
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Oatmeal with Berries and Almonds',
+                        '/images/Oatmeal.jpg',
+                        'A healthy and delicious breakfast with oats and fresh berries.',
+                        '350 kcal / 10g Protein / 12g Fat / 50g Carbs',
+                        'Ingredients: 50g oats, 200ml milk or water, 50g mixed berries (strawberries, blueberries, raspberries), 10g almonds, 1 tsp honey.',
+                        'Instructions: Cook oats in milk or water. Top with berries, chopped almonds, and drizzle with honey.'
+                    )">
+                        <img src="/images/Oatmeal.jpg">
+                        <h3>Oatmeal with Berries and Almonds</h3>
+                        <p>350 kcal / 10g Protein / 12g Fat / 50g Carbs</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                    <div class="recipe-card" onclick="openRecipe(
+                        'Grilled Salmon with Quinoa',
+                        '/images/salmon.jpg',
+                        'A protein-packed meal with grilled salmon and quinoa.',
+                        '450 kcal / 40g Protein / 20g Fat / 35g Carbs',
+                        'Ingredients: 150g salmon fillet, 80g quinoa, ½ zucchini, 1 tbsp olive oil, lemon juice, salt, pepper to taste.',
+                        'Instructions: Cook quinoa according to package instructions. Grill the salmon and sliced zucchini with olive oil. Serve with quinoa and drizzle with lemon juice.'
+                    )">
+                        <img src="/images/salmon.jpg">
+                        <h3>Grilled Salmon with Quinoa</h3>
+                        <p>450 kcal / 40g Protein / 20g Fat / 35g Carbs</p>
+                        <button class="btn">Recept</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </section>
+</section>
 
-  <!-- Достижения -->
-  <section id="achievements" class="section">
-    <h2>Достижения</h2>
-    <div class="achievements-container">
-      <div class="achievement">🏆 7 дней без пропусков</div>
-      <div class="achievement">🔥 10 тренировок подряд</div>
-      <div class="achievement">💪 5 кг сброшено</div>
-      <div class="achievement">🏃 Пробежал 5 км</div>
-      <div class="achievement">🥗 30 дней правильного питания</div>
-    </div>
-  </section>
-
-  <!-- Профиль -->
-  <section id="profile" class="section">
-    <h2>Личный кабинет</h2>
-    <p>Добро пожаловать, <span id="username">Пользователь</span>!</p>
-    <div class="profile-details">
-      <p><strong>Возраст:</strong> <span id="age">25</span></p>
-      <p><strong>Вес:</strong> <span id="weight">70 кг</span></p>
-      <p><strong>Цель:</strong> <span id="goal">Похудение</span></p>
-    </div>
-    <button id="update-profile">Обновить данные</button>
-    <button id="logout-btn">Выйти</button>
-  </section>
-
-  <!-- Ежедневные задачи -->
-  <section id="daily-tasks" class="section">
-    <h2>Ежедневные задачи</h2>
-    <ul class="tasks-list">
-      <li><input type="checkbox"> Утренняя зарядка</li>
-      <li><input type="checkbox"> 2 литра воды</li>
-      <li><input type="checkbox"> 10 000 шагов</li>
-      <li><input type="checkbox"> 30 минут кардио</li>
-    </ul>
-  </section>
-
-  <!-- Программы тренировок -->
-  <section id="workout-plans" class="section">
-    <h2>Программы тренировок</h2>
-    <div class="workout-container">
-      <div class="workout">💪 Силовые тренировки</div>
-      <div class="workout">🏃 Кардио-программа</div>
-      <div class="workout">🧘 Гибкость и растяжка</div>
-      <div class="workout">🥋 Боевые искусства</div>
-    </div>
-  </section>
-
-  <!-- План питания -->
-  <section id="nutrition" class="section">
-    <h2>План питания</h2>
-    <p>Персональные рекомендации по питанию в зависимости от целей.</p>
-    <button id="get-nutrition-plan">Получить план</button>
-  </section>
-
-  <!-- Футер -->
-  <footer>
-    <p>&copy; 2024 AthletiQ. Все права защищены.</p>
-  </footer>
-
-  <!-- Модальные окна -->
-  <div id="login-modal" class="modal">
+<div id="recipeModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Вход</h2>
-      <form id="login-form">
-        <input type="text" placeholder="Имя пользователя" required>
-        <input type="password" placeholder="Пароль" required>
-        <button type="submit">Войти</button>
-      </form>
+        <span class="close" onclick="document.getElementById('recipeModal').style.display='none'">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <img id="modalImage" src="" alt="Recipe Image">
+        <p id="modalDescription"></p>
+        <h3>Macros</h3>
+        <p id="modalCalories"></p>
+        <h3>Ingredients</h3>
+        <ul id="modalIngredients"></ul> <!-- Используем список -->
+        <h3>Instructions</h3>
+        <p id="modalInstructions"></p>
     </div>
-  </div>
+</div>
 
-  <div id="register-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Регистрация</h2>
-      <form id="register-form">
-        <input type="text" placeholder="Имя пользователя" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Пароль" required>
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
-  </div>
 
-  <div id="update-profile-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Обновить профиль</h2>
-      <form id="update-profile-form">
-        <input type="number" placeholder="Возраст" id="update-age" required>
-        <input type="number" placeholder="Вес (кг)" id="update-weight" required>
-        <select id="update-goal" required>
-          <option value="Похудение">Похудение</option>
-          <option value="Набор массы">Набор массы</option>
-          <option value="Поддержание формы">Поддержание формы</option>
-        </select>
-        <button type="submit">Обновить</button>
-      </form>
-    </div>
-  </div>
 </body>
 </html>
