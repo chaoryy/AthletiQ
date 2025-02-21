@@ -68,7 +68,7 @@ body {
     position: relative;
     width: 100%;
     padding-top: 42.86%; 
-    background: url('/images/pic1.jpg') no-repeat center center;
+    background: url('images/pic1.jpg') no-repeat center center;
     background-size: cover;
     color: var(--white);
 }
