@@ -1,10 +1,3 @@
-
-logoutBtn.addEventListener("click", function () {
-    localStorage.clear();
-    window.location.href = "login.html"; // Перенаправляем на страницу входа
-});        
-
-
 function toggleDropdown(contentId, iconId) {
     const content = document.getElementById(contentId);
     const icon = document.getElementById(iconId);
@@ -20,14 +13,11 @@ function toggleDropdown(contentId, iconId) {
     }
 }
 
-
-/*модальные окна*/
-
 const modal = document.getElementById("recipeModal");
 
 function openRecipe(title, image, description, macros, ingredients, instructions) {
     const modal = document.getElementById("recipeModal"); 
-    modal.style.display = "flex"; // Показываем окно
+    modal.style.display = "flex"; 
     modal.classList.add("active"); 
 
     document.getElementById("modalTitle").innerText = title;
@@ -48,7 +38,7 @@ function openRecipe(title, image, description, macros, ingredients, instructions
 
 function closeModal() {
     const modal = document.getElementById("recipeModal");
-    modal.style.display = "none"; // Скрываем окно
+    modal.style.display = "none"; 
     modal.classList.remove("active");
 }
 
