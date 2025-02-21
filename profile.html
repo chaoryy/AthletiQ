@@ -8,20 +8,17 @@
     <script defer src="/profile.js"></script>
 </head>
 <body>
-    <!-- Шапка -->
+
   <header>
     <nav class="navbar">
       <div class="logo">Athleti<span class="highlight">Q</span></div>
      	 <ul class="nav-links">
-        <li><a href="/index.html">Home</a></li>
-        <button id="logout-btn" class="button">Log Out</button>
+        <a id="logout-btn"  href="/index.html" class="button">Log Out</a>
       </ul>
     </nav>
   </header>
-  <!-- Герой-секция -->
 
   <section class="account">
-    <!-- Профиль -->
     <section class="profile">
         <div class="profile-header">
             <img src="/images/profile_pic.jpg" class="profile-pic">
@@ -36,7 +33,6 @@
     </section>
     
     <div class="content">
-        <!-- Программы тренировок -->
         <section id="workout-recommendations" class="section">
             <h2>WORKOUT</h2>
             <p>🔥 Recommended Workouts</p>
@@ -64,8 +60,6 @@
             </div>
         </section>
         
-
-        <!-- План питания -->
         <section id="nutrition" class="section">
             <h2>NUTRITION</h2>
             <div class="dropdown">
@@ -182,7 +176,7 @@
         <h3>Macros</h3>
         <p id="modalCalories"></p>
         <h3>Ingredients</h3>
-        <ul id="modalIngredients"></ul> <!-- Используем список -->
+        <ul id="modalIngredients"></ul> 
         <h3>Instructions</h3>
         <p id="modalInstructions"></p>
     </div>

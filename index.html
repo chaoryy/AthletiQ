@@ -8,30 +8,27 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Шапка -->
+
   <header>
     <nav class="navbar">
       <div class="logo">Athleti<span class="highlight">Q</span></div>
       <ul class="nav-links">
-        <li><a href="#about-us">About Us</a></li>
         <li><a href="profile.html">Profile</a></li>
         <li class="navbar__item">
-          <a href="/" class="button">Log In</a>
+          <a href="/login.html" class="button" target="_blank">Log In</a>
         </li>
       </ul>
     </nav>
   </header>
 
-  <!-- Герой-секция -->
   <section class="hero">
     <div class="hero-content">
       <h1>90 DAYS</h1>
       <p>Change your life in 90 days!</p>
-      <button id="register-btn" class="button">Join Now</button>
+      <a id="register-btn" href="/login.html" target="_blank" class="button">Join Now</a>
     </div>
   </section>
 
-  <!-- Calculator -->
   <section class="calculator">
     <h2>CALORIE CALCULATOR</h2>
     <label for="height">Height (cm):</label>
@@ -68,11 +65,8 @@
       <div class="result-box">
           <h3>Your BMI</h3>
           <p class="bmi-value">--</p>
-          <div class="bmi-scale">
-              <span>Deficit</span>
-              <span>Normal</span>
-              <span>Excess</span>
-          </div>
+          <p>BMI Category: <span class="bmi-category"></span></p>
+
       </div>
   
       <div class="result-box">

@@ -15,7 +15,6 @@
     color: var(--text-color);
   }
   
-  /* Шапка */
   .navbar {
       background: var(--white);
       height: 80px;
@@ -66,8 +65,6 @@
       color: var(--primary-color);
   }
   
-  /* profile */
-
   .account {
     padding-top: 100px;
     max-width: 1350px;
@@ -90,16 +87,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px; /* Отступ между заголовком и аватаркой */
+    gap: 50px; 
 }
 
   .profile-pic {
     margin-top: 40px;
-    width: 300px; /* Размер фото */
+    width: 300px; 
     height: 300px;
-    border-radius: 50%; /* Делаем круг */
-    border: 5px solid var(--primary-color); /* Розовая рамка */
-    object-fit: cover; /* Обрезка фото, чтобы не искажалось */
+    border-radius: 50%; 
+    border: 5px solid var(--primary-color); 
+    object-fit: cover; 
   }
 
   .profile-info {
@@ -130,11 +127,10 @@
     flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Отступ между разделами */
+    gap: 30px; 
     width: 100%;
 }
 
-/* Workouts и Nutrition */
 .section {
     width: 90%;
     background: #fff;
@@ -225,8 +221,6 @@
     color: var(--primary-color);
 }
 
-/*тренировки*/
-
 .workout-list {
   display: flex;
   flex-wrap: wrap;
@@ -239,7 +233,6 @@
   width: 200px;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -258,12 +251,9 @@
   color: var(--primary-color);
 }
 
-/*nutririon*/
-
 .recipe-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -272,12 +262,11 @@
 
 .recipe-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .recipe-card img {
   width: 100%;
-  height: 160px;
+  height: 180px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -297,24 +286,22 @@
   background: var(--primary-color);
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 8px 90px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   transition: background 0.3s ease;
 }
 
 .recipe-card .btn:hover {
-  background: var(--secondary-color);
+  transform: scale(1.05);
 }
 
-/*рецепты*/
-/* Стили для модального окна */
 .modal {
   position: fixed;
   inset: 0;
-  display: none; /* Скрыто по умолчанию */
+  display: none; 
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
@@ -322,15 +309,15 @@
 }
 
 .modal.active {
-  display: flex; /* Показываем модальное окно */
+  display: flex; 
 }
 
 .modal-content {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  width: 420px;
-  max-width: 90%;
+  width: 420;
+  max-width: 80%;
   text-align: center;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -338,8 +325,22 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.modal-content img {
+  width: 100%; 
+  max-width: 300px; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 8px;
+  display: block;
+  margin: 10px auto; 
+}
+
+.modal-content h2 {
+  color: var(--primary-color);
+}
+
 .modal.active .modal-content {
-  transform: scale(1); /* Анимация появления */
+  transform: scale(1);
 }
 
 .close {
@@ -348,4 +349,22 @@
   right: 15px;
   font-size: 24px;
   cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .account {
+      flex-direction: column; /* Элементы становятся вертикально */
+      align-items: center; /* Центрируем */
+      gap: 20px; /* Уменьшаем расстояние */
+  }
+  
+  .profile {
+      max-width: 100%; /* Даем блоку занять всю ширину */
+      text-align: center; /* Центрируем текст */
+  }
+  
+  .profile-pic {
+      width: 200px; /* Делаем фото меньше */
+      height: 200px;
+  }
 }

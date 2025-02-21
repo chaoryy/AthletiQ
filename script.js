@@ -70,15 +70,11 @@ document.getElementById("calculate").addEventListener("click", function () {
 
 document.querySelectorAll(".btn-group button").forEach(button => {
     button.addEventListener("click", function() {
-        // Убираем активный класс со всех кнопок в этой группе
         this.parentElement.querySelectorAll("button").forEach(btn => btn.classList.remove("active"));
-        // Добавляем активный класс к нажатой кнопке
         this.classList.add("active");
     });
 });
 
-
-/*output*/
 document.getElementById("calculate").addEventListener("click", function () {
     const weight = parseFloat(document.getElementById("weight").value);
     const height = parseFloat(document.getElementById("height").value) / 100;
@@ -92,26 +88,31 @@ document.getElementById("calculate").addEventListener("click", function () {
         return;
     }
 
-    // 1. BMI Calculation
     const bmi = (weight / (height * height)).toFixed(1);
     document.querySelector(".bmi-value").textContent = bmi;
 
-    // 2. Base Metabolism Calculation
+    let bmiCategory = "";
+    if (bmi < 18.5) {
+        bmiCategory = "Low BMI";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        bmiCategory = "Normal BMI";
+    } else {
+        bmiCategory = "High BMI";
+    }
+    document.querySelector(".bmi-category").textContent = bmiCategory;
+
     let bmr = formula === "mifflin"
         ? (10 * weight) + (6.25 * (height * 100)) - (5 * age) + 5
         : 66 + (13.75 * weight) + (5 * (height * 100)) - (6.8 * age);
 
-    // 3. Activity Multiplier
     const activityMultipliers = [1.2, 1.375, 1.55, 1.725, 1.9];
     const tdee = bmr * activityMultipliers[activity - 1];
 
-    // 4. Adjust for Goal
     const goalAdjustments = { lose: 0.85, maintain: 1, gain: 1.15 };
     const dailyCalories = Math.round(tdee * goalAdjustments[goal]);
 
     document.querySelector(".calories-value").textContent = `${dailyCalories} kcal`;
 
-    // 5. Macronutrient Breakdown
     const protein = Math.round((dailyCalories * 0.15) / 4);
     const fat = Math.round((dailyCalories * 0.25) / 9);
     const carbs = Math.round((dailyCalories * 0.60) / 4);
