@@ -1,5 +1,6 @@
 import Router from 'koa-router';
 import { getUserById } from '../services/users.js';
+import { getKnex } from '../utils/knex.js';
 
 export const userRouter = new Router();
 
@@ -10,4 +11,5 @@ userRouter.post('/users/:id', async (ctx) => {
     user,
   };
   ctx.status = 200;
+  
 });

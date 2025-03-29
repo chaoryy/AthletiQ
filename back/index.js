@@ -1,7 +1,6 @@
 import Koa from 'koa';
 import bodyparser from 'koa-bodyparser';
 import { getKnex } from './src/utils/knex.js';
-import { userRouter } from './src/controllers/users.js';
 import { router } from './src/controllers/index.js';
 
 async function main() {
@@ -14,8 +13,26 @@ async function main() {
   const app = new Koa();
 
   app.use(bodyparser());
-  app.use(userRouter.routes());
-  app.listen(4200);
+  app.use((async(ctx, next) => {
+    try {
+      await next();
+    } catch (e) {
+      console.log(e);
+
+      ctx.status = 500;
+      ctx.body = {
+        message: e.message,
+      };
+    }
+
+  }))
+  app.use(async(ctx, next) => {
+    console.log(ctx.method, ctx.url, ctx.body);
+
+    return next();
+  });
+  app.use(router.routes());
+  app.use(router.allowedMethods());
 
   app.use(async (ctx) => {
     ctx.body = {
@@ -26,6 +43,10 @@ async function main() {
   });
 
   console.log(res.rows);
+
+  app.listen(4200, () => {
+    console.log('server started at port 4200');
+  });
 }
 
 main().catch((e) => {
