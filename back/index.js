@@ -1,43 +1,34 @@
 import Koa from 'koa';
 import bodyparser from 'koa-bodyparser';
 import { getKnex } from './src/utils/knex.js';
-import Router from 'koa-router';
-
-const router = new Router();
-
-router.post('/users', async (ctx) => {
-    console.log('post request to /users');
-
-    ctx.status = 201;
-    ctx.body = {};
-})
+import { userRouter } from './src/controllers/users.js';
+import { router } from './src/controllers/index.js';
 
 async function main() {
-    console.log('start', new Date());
+  console.log('start', new Date());
 
-    const knex = await getKnex();
+  const knex = await getKnex();
 
-    const res = await knex.raw('select  1 + 1 as sum');
-    
-    const app = new Koa();
+  const res = await knex.raw('select  1 + 1 as sum');
 
-    app.use(bodyparser());
-    app.use(router.routes());
-    app.listen(4200);
+  const app = new Koa();
 
-    app.use(async (ctx) => {
-        ctx.body = {
-            hello: 'world',
-        };
+  app.use(bodyparser());
+  app.use(userRouter.routes());
+  app.listen(4200);
 
-        ctx.status = 200;
-    });
+  app.use(async (ctx) => {
+    ctx.body = {
+      hello: 'world',
+    };
 
-    console.log(res.rows);
+    ctx.status = 200;
+  });
 
+  console.log(res.rows);
 }
 
 main().catch((e) => {
-    console.log(e);
-    process.exit(1);
+  console.log(e);
+  process.exit(1);
 });
