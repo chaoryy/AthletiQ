@@ -17,8 +17,20 @@ async function main() {
     try {
       await next();
     } catch (e) {
-      console.log(e);
 
+      if(e.isJoi){
+        console.log('this is joi error');
+        ctx.status = 400;
+        ctx.body = {
+          errors: e.message,
+        };
+
+        return;
+
+      }
+      
+      console.log('caught in try-catch', e.message);
+      
       ctx.status = 500;
       ctx.body = {
         message: e.message,
