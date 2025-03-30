@@ -11,5 +11,12 @@ userRouter.post('/users/:id', async (ctx) => {
     user,
   };
   ctx.status = 200;
-  
 });
+
+userRouter.post('/users', async (ctx) => {
+  const knex = await getKnex();
+  const users = await knex('users');
+
+  ctx.body = { users };
+  ctx.status = 200;
+})
