@@ -40,13 +40,14 @@ async function main() {
   });
   app.use(authRouter.routes());
   app.use(async (ctx, next) => {
-    if (ctx.path === '/register' || ctx.path === '/login') {
+    if (['/register', '/login', '/logout'].includes(ctx.path)) {
       return next();
     }
     const { headers } = ctx.request;
     const { authorization } = headers;
     if (!authorization) {
       ctx.throw(401,'Authorization header is missing');
+      return;
     }
   
     const token = authorization.split(' ')[1];

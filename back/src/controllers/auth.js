@@ -68,21 +68,25 @@ authRouter.post('/register', async(ctx) => {
     const { authorization } = ctx.request.headers;
   
     if (!authorization) {
-        throw new Error('Authorization header is missing');
+        ctx.throw(401, 'Authorization header is missing');
+        return;
     }
 
     const token = authorization.split(' ')[1];
-    
-    if (!token) {
-        throw new Error('Token is missing');
-    }
 
     const knex = await getKnex();
-   
-    await knex('tokens').where({ token }).del();
+    
+    const deletedCount = await knex('tokens').where({ token }).del();
+
+    if (deletedCount === 0) {
+        ctx.throw(404, 'Token not found or already deleted');
+        return;
+    }
 
     ctx.status = 200;
-    ctx.body = { ok: true, message: 'Logged out successfully' };
+    ctx.body = { ok: true, 
+      message: 'Logged out successfully', 
+      deletedToken: token};
     })
 
 export { authRouter };
